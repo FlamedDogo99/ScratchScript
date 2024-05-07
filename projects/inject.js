@@ -3,6 +3,20 @@ function injectScript(url) {
     x.blob().then((y) => {
       y.text().then((z) => {
         var script = document.createElement("script");
+        script.type = "text/javascript"
+
+        script.innerHTML = z;
+        document.body.appendChild(script);
+      });
+    });
+  });
+}
+function injectModule(url) {
+  fetch(url).then((x) => {
+    x.blob().then((y) => {
+      y.text().then((z) => {
+        var script = document.createElement("script");
+        script.type = "module"
         script.innerHTML = z;
         document.body.appendChild(script);
       });
